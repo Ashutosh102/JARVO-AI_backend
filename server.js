@@ -20,7 +20,10 @@ app.get('/', async (req, res) => {
     message: 'Hello from JARVIS!'
   })
 })
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
